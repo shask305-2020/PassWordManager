@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace PassWordManager
 {
@@ -20,11 +23,13 @@ namespace PassWordManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SqlConnection sqlConnection = null;
         public MainWindow()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;    //Начальное значение ComboBox
         }
+
 
         public static string GetPass(int x, byte sw)    //получение пароля
         {
@@ -59,7 +64,7 @@ namespace PassWordManager
             buff.Content = pass_1;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)     //Генерирование пароля
         {
             int x = 8 + comboBox1.SelectedIndex;
             byte y;
@@ -72,6 +77,26 @@ namespace PassWordManager
             history.Items.Insert(0, pass);
             Clipboard.SetText(pass);
             buff.Content = pass;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PassDB"].ConnectionString);
+            sqlConnection.Open();
+            if (sqlConnection.State == ConnectionState.Open)
+            {
+                linkDB.Content = "Ok";
+            }
+            else
+            {
+                linkDB.Content = "Fail";
+                MessageBox.Show(sqlConnection.State.ToString());
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            sqlConnection.Close();
         }
     }
 }

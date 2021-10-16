@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassWordManager"
         mc:Ignorable="d"
-        Title="PassWordManager ver.0.01" Height="450" Width="800" MinWidth="700" MinHeight="400">
+        Title="PassWordManager ver.0.01" Height="507.273" Width="800" MinWidth="700" MinHeight="400" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <TabControl Margin="10">
             <TabItem Header="Получить пароль">
@@ -23,13 +23,15 @@
                     </ComboBox>
                     <Label Content="Длина пароля" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <CheckBox x:Name="symb_1" Content="Спец. символы" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Пароль:" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelPass" Content="Тут будет пароль" Margin="69,123,0,0" VerticalAlignment="Top" Background="#FFEEF9A9" FontFamily="Consolas" FontSize="14" HorizontalAlignment="Left" Width="177"/>
+                    <Label Content="Пароль:" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelPass" Content="Тут будет пароль" Margin="69,105,0,0" VerticalAlignment="Top" Background="#FFEEF9A9" FontFamily="Consolas" FontSize="14" HorizontalAlignment="Left" Width="177"/>
                     <Label Content="Буфер обмена:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="buff" Content="Пусто" HorizontalAlignment="Left" Margin="107,61,0,0" Background="#FFDED9D9" VerticalAlignment="Top" Width="139"/>
                     <Label Content="История" HorizontalAlignment="Left" Margin="280,15,0,0" VerticalAlignment="Top"/>
                     <ListBox x:Name="history" Margin="280,50,10,10" SelectionChanged="history_SelectionChanged"/>
-                    <Button Content="Генерированть пароль" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Width="236" Height="46" Click="Button_Click"/>
+                    <Button Content="Генерированть пароль" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="236" Height="46" Click="Button_Click"/>
+                    <Label Content="Состояние подключения к БД:" HorizontalAlignment="Left" Margin="10,187,0,0" Width="182" Height="26" VerticalAlignment="Top"/>
+                    <Label x:Name="linkDB" Content="Откл." HorizontalAlignment="Left" Margin="192,187,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Просмотр паролей">

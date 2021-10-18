@@ -35,9 +35,9 @@ namespace PassWordManager
         {
             string pass = "";
             var rand = new Random();
-            switch (sw)
+            switch (sw)     //Определяет, использовать ли спец.символы при генерации пароля
             {
-                case 0:
+                case 0:     //Спец.символы НЕ используются при генерации пароля
                     while (pass.Length < x)
                     {
                         Char c = (char)rand.Next(33, 125);
@@ -45,7 +45,7 @@ namespace PassWordManager
                             pass += c;
                     }
                     return pass;
-                case 1:
+                case 1:     //Спец.символы используются при генерации пароля
                     while (pass.Length < x)
                     {
                         Char c = (char)rand.Next(33, 125);
@@ -79,24 +79,20 @@ namespace PassWordManager
             buff.Content = pass;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)    //Подключение к БП при загрузке приложения
         {
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PassDB"].ConnectionString);
             sqlConnection.Open();
-            if (sqlConnection.State == ConnectionState.Open)
-            {
-                linkDB.Content = "Ok";
-            }
-            else
-            {
-                linkDB.Content = "Fail";
-                MessageBox.Show(sqlConnection.State.ToString());
-            }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void Window_Closed(object sender, EventArgs e)      //Закрытие подключения к БД при выходе из приложения
         {
             sqlConnection.Close();
+        }
+
+        private void button_insert_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

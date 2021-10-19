@@ -92,7 +92,59 @@ namespace PassWordManager
 
         private void button_insert_Click(object sender, RoutedEventArgs e)
         {
+            bool ser = true, log = true, pas = true;
+            if (service.Text == "")
+            {
+                MessageBox.Show("Введите название сервиса");
+                ser = false;
+            }
+            else if (login.Text == "")
+            {
+                MessageBox.Show("Введите логин");
+                log = false;
+            }
+            else if (password.Text == "")
+            {
+                MessageBox.Show("Введите пароль");
+                pas = false;
+            }
 
+            if (ser && log && pas)
+            {
+                SqlCommand command = new SqlCommand($"INSERT INTO [Table_pass] (service, login, password, note) VALUES (@service, @login, @password, @note)", sqlConnection);
+                command.Parameters.AddWithValue("service", service.Text);
+                command.Parameters.AddWithValue("login", login.Text);
+                command.Parameters.AddWithValue("password", password.Text);
+                command.Parameters.AddWithValue("note", note.Text);
+                string result_of_operation = command.ExecuteNonQuery().ToString();
+
+                switch (result_of_operation)
+                {
+                    case "1":
+                        result_operation.Content = "Операция произведена успешно";
+                        service.Text = "";
+                        login.Text = "";
+                        password.Text = "";
+                        break;
+                    default:
+                        result_operation.Content = "Запись не выполнена";
+                        break;
+                }
+            }
+
+        }
+
+        private void service_GotFocus(object sender, RoutedEventArgs e)
+        {
+            result_operation.Content = "Ожидание данных";
+        }
+        private void login_GotFocus(object sender, RoutedEventArgs e)
+        {
+            result_operation.Content = "Ожидание данных";
+        }
+        private void password_GotFocus(object sender, RoutedEventArgs e)
+        {
+            result_operation.Content = "Ожидание данных";
         }
     }
 }

@@ -36,12 +36,16 @@
                     <Button Content="Генерированть пароль" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="236" Height="46" Click="Button_Click"/>
                     <Rectangle Grid.Column="1" Fill="#FFF4F4F5" Margin="10" Stroke="Black"/>
                     <Label Content="Название сервиса:" Grid.Column="1" HorizontalAlignment="Left" Margin="25,18,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="services" Grid.Column="1" Height="23" Margin="142,21,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <TextBox x:Name="service" Grid.Column="1" Height="23" Margin="142,21,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" GotFocus="service_GotFocus"/>
                     <Label Content="Логин:" Grid.Column="1" HorizontalAlignment="Left" Margin="91,49,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="login" Grid.Column="1" Height="23" Margin="142,52,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                     <Label Content="Пароль:" Grid.Column="1" HorizontalAlignment="Left" Margin="83,80,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="password" Grid.Column="1" Height="23" Margin="142,83,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,116,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
+                    <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,150,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
+                    <Label Content="Примечание:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,111,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="note" Grid.Column="1" Height="23" Margin="142,114,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <Label Content="Результат операции:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,174,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="result_operation" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="182,174,0,0" VerticalAlignment="Top" Width="269"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Просмотр паролей">

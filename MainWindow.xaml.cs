@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,8 +82,20 @@ namespace PassWordManager
 
         private void Window_Loaded(object sender, RoutedEventArgs e)    //Подключение к БП при загрузке приложения
         {
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PassDB"].ConnectionString);
+            //sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PassDB"].ConnectionString);
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Pass"].ConnectionString);
+            //sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PassDB1"].ConnectionString);
             sqlConnection.Open();
+            if (sqlConnection.State == ConnectionState.Open)   //этот шаг делаем только для проверки подключения
+            {
+                MessageBox.Show("Подключение установлено");    //Проверяем, есть подключение к БД
+            }
+            PassWordManager.PassDBDataSet passDBDataSet = ((PassWordManager.PassDBDataSet)(this.FindResource("passDBDataSet")));
+            // Загрузить данные в таблицу Table_pass. Можно изменить этот код как требуется.
+            PassWordManager.PassDBDataSetTableAdapters.Table_passTableAdapter passDBDataSetTable_passTableAdapter = new PassWordManager.PassDBDataSetTableAdapters.Table_passTableAdapter();
+            passDBDataSetTable_passTableAdapter.Fill(passDBDataSet.Table_pass);
+            System.Windows.Data.CollectionViewSource table_passViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("table_passViewSource")));
+            table_passViewSource.View.MoveCurrentToFirst();
         }
 
         private void Window_Closed(object sender, EventArgs e)      //Закрытие подключения к БД при выходе из приложения
@@ -125,6 +138,7 @@ namespace PassWordManager
                         service.Text = "";
                         login.Text = "";
                         password.Text = "";
+                        note.Text = "";
                         break;
                     default:
                         result_operation.Content = "Запись не выполнена";

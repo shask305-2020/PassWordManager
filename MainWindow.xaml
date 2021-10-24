@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassWordManager"
         mc:Ignorable="d"
-        Title="PassWordManager ver.0.01" Height="500" MinHeight="500" MaxHeight="700" Width="800" MinWidth="800" MaxWidth="1000" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="PassWordManager ver.0.031" Height="500" MinHeight="500" MaxHeight="700" Width="800" MinWidth="800" MaxWidth="1000" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Window.Resources>
+        <local:PassDBDataSet x:Key="passDBDataSet"/>
+        <CollectionViewSource x:Key="table_passViewSource" Source="{Binding Table_pass, Source={StaticResource passDBDataSet}}"/>
+    </Window.Resources>
     <Grid>
         <TabControl Margin="10">
             <TabItem Header="Получить пароль">
@@ -41,15 +45,25 @@
                     <TextBox x:Name="login" Grid.Column="1" Height="23" Margin="142,52,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
                     <Label Content="Пароль:" Grid.Column="1" HorizontalAlignment="Left" Margin="83,80,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="password" Grid.Column="1" Height="23" Margin="142,83,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-                    <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,150,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
                     <Label Content="Примечание:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,111,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="note" Grid.Column="1" Height="23" Margin="142,114,22,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,150,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
                     <Label Content="Результат операции:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,174,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="result_operation" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="182,174,0,0" VerticalAlignment="Top" Width="269"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Просмотр паролей">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource table_passViewSource}">
+                    <DataGrid x:Name="table_passDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="serviceColumn" Binding="{Binding service}" Header="service" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="loginColumn" Binding="{Binding login}" Header="login" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="password" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="noteColumn" Binding="{Binding note}" Header="note" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
         </TabControl>
 

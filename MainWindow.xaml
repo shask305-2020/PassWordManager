@@ -50,17 +50,18 @@
                     <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,150,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
                     <Label Content="Результат операции:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,174,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="result_operation" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="182,174,0,0" VerticalAlignment="Top" Width="269"/>
+                    <Button x:Name="refreshButton" Content="ReFresh" Grid.Column="1" HorizontalAlignment="Left" Margin="182,218,0,0" VerticalAlignment="Top" Width="75" Click="refreshButton_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Просмотр паролей">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource table_passViewSource}">
-                    <DataGrid x:Name="table_passDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid x:Name="table_passDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected" MinColumnWidth="50">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="serviceColumn" Binding="{Binding service}" Header="service" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="loginColumn" Binding="{Binding login}" Header="login" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="password" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="noteColumn" Binding="{Binding note}" Header="note" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="№ п/п" IsReadOnly="True" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="serviceColumn" Binding="{Binding service}" Header="Сервис" Width="SizeToHeader" MaxWidth="200"/>
+                            <DataGridTextColumn x:Name="loginColumn" Binding="{Binding login}" Header="Логин" Width="SizeToHeader" MaxWidth="200"/>
+                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="Пароль" Width="SizeToHeader" MaxWidth="200"/>
+                            <DataGridTextColumn x:Name="noteColumn" Binding="{Binding note}" Header="Примечание" Width="SizeToHeader" MaxWidth="250"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

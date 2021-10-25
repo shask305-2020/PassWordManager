@@ -130,6 +130,7 @@ namespace PassWordManager
                 command.Parameters.AddWithValue("password", password.Text);
                 command.Parameters.AddWithValue("note", note.Text);
                 string result_of_operation = command.ExecuteNonQuery().ToString();
+                
 
                 switch (result_of_operation)
                 {
@@ -159,6 +160,11 @@ namespace PassWordManager
         private void password_GotFocus(object sender, RoutedEventArgs e)
         {
             result_operation.Content = "Ожидание данных";
+        }
+
+        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            table_passDataGrid.UpdateLayout();
         }
     }
 }

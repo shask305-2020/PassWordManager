@@ -50,7 +50,7 @@
                     <Button x:Name="button_insert" Content="Записать данные" Grid.Column="1" Margin="318,150,22,0" VerticalAlignment="Top" Click="button_insert_Click"/>
                     <Label Content="Результат операции:" Grid.Column="1" HorizontalAlignment="Left" Margin="54,174,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="result_operation" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="182,174,0,0" VerticalAlignment="Top" Width="269"/>
-                    <Button x:Name="refreshButton" Content="ReFresh" Grid.Column="1" HorizontalAlignment="Left" Margin="182,218,0,0" VerticalAlignment="Top" Width="75" Click="refreshButton_Click"/>
+                    <Button x:Name="refreshButton" Content="ReFresh" Grid.Column="1" HorizontalAlignment="Left" Margin="409,205,0,0" VerticalAlignment="Top" Width="75" Click="refreshButton_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Просмотр паролей">

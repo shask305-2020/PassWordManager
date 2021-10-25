@@ -164,7 +164,11 @@ namespace PassWordManager
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
-            table_passDataGrid.UpdateLayout();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Table_pass", sqlConnection);
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            table_passDataGrid.ItemsSource = (System.Collections.IEnumerable)dataSet.Tables[0];
         }
     }
 }

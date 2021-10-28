@@ -168,7 +168,7 @@ namespace PassWordManager
 
             DataSet dataSet = new DataSet();
             dataAdapter.Fill(dataSet);
-            table_passDataGrid.ItemsSource = (System.Collections.IEnumerable)dataSet.Tables[0];
+            
         }
     }
 }

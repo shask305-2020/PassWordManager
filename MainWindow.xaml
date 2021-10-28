@@ -56,11 +56,11 @@
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource table_passViewSource}">
                     <DataGrid x:Name="table_passDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected" MinColumnWidth="50">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="№ п/п" IsReadOnly="True" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="serviceColumn" Binding="{Binding service}" Header="Сервис" Width="SizeToHeader" MaxWidth="200"/>
-                            <DataGridTextColumn x:Name="loginColumn" Binding="{Binding login}" Header="Логин" Width="SizeToHeader" MaxWidth="200"/>
-                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="Пароль" Width="SizeToHeader" MaxWidth="200"/>
-                            <DataGridTextColumn x:Name="noteColumn" Binding="{Binding note}" Header="Примечание" Width="SizeToHeader" MaxWidth="250"/>
+                            <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="№ п/п" IsReadOnly="True" Width="SizeToHeader" MinWidth="50"/>
+                            <DataGridTextColumn x:Name="serviceColumn" Binding="{Binding service}" Header="Сервис" Width="SizeToHeader" MaxWidth="200" MinWidth="100"/>
+                            <DataGridTextColumn x:Name="loginColumn" Binding="{Binding login}" Header="Логин" Width="SizeToHeader" MaxWidth="200" MinWidth="150"/>
+                            <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="Пароль" Width="SizeToHeader" MaxWidth="200" MinWidth="150"/>
+                            <DataGridTextColumn x:Name="noteColumn" Binding="{Binding note}" Header="Примечание" Width="SizeToHeader" MaxWidth="250" MinWidth="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

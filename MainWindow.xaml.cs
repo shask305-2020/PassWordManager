@@ -130,7 +130,12 @@ namespace PassWordManager
                 command.Parameters.AddWithValue("password", password.Text);
                 command.Parameters.AddWithValue("note", note.Text);
                 string result_of_operation = command.ExecuteNonQuery().ToString();
-                
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Table_pass", sqlConnection);
+
+                DataTable table = new DataTable();
+                dataAdapter.Fill(table);
+                table_passDataGrid.DataContext = table;
 
                 switch (result_of_operation)
                 {
@@ -160,15 +165,6 @@ namespace PassWordManager
         private void password_GotFocus(object sender, RoutedEventArgs e)
         {
             result_operation.Content = "Ожидание данных";
-        }
-
-        private void refreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Table_pass", sqlConnection);
-
-            DataSet dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
-            
         }
     }
 }
